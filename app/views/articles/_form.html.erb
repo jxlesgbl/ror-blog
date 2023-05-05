@@ -1,0 +1,26 @@
+<%= form_with model: article, class: "row g-3" do |form| %>
+  <div class="col-auto input-group">
+    <%= form.label :title, class:"input-group-text" %><br>
+    <%= form.text_field :title, class:"form-control" %>
+    <% article.errors.full_messages_for(:title).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="input-group">
+    <%= form.label :body, class:"input-group-text" %><br>
+    <%= form.text_area :body, class:"form-control" %><br>
+    <% article.errors.full_messages_for(:body).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="col-auto input-group">
+    <%= form.label :status, class:"input-group-text" %><br>
+    <%= form.select :status, ['public', 'private', 'archived'], selected: 'public', class:"form-select" %>
+  </div>
+
+  <div class="col-auto">
+    <%= form.submit class:"btn btn-success" %>
+  </div>
+<% end %>
